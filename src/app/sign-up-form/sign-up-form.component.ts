@@ -10,7 +10,14 @@ import { Router } from '@angular/router'
 })
 export class SignUpFormComponent implements OnInit {
 
-  formData = {}
+  formData = {
+    firstName: '',
+    lastName: '',
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  }
 
   error = false
   errorMessage = ''

@@ -32,7 +32,7 @@ export class SignUpFormComponent implements OnInit {
     this.httpClient.post('http://localhost:3000/users', newUser)
       .subscribe(data => {
         console.log('POST Successful ', data)
-        this.router.navigate(['/'])
+        this.router.navigate(['/login'])
       }, error => {
         this.error = true
         console.log('POST ERROR ', error.error.constraint)

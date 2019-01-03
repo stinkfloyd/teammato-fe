@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component'
 import { SplashPageComponent } from './splash-page/splash-page.component'
 import { SigninComponent } from './signin/signin.component'
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component'
+import { LogInFormComponent } from './log-in-form/log-in-form.component'
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SignUpFormComponent } from './sign-up-form/sign-up-form.component'
     NavbarComponent,
     SplashPageComponent,
     SigninComponent,
-    SignUpFormComponent
+    SignUpFormComponent,
+    LogInFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,57 @@
+<div class="container">
+  <h1>Sign Up Form</h1>
+  <form (ngSubmit)="onSubmit()" #signUpForm="ngForm">
+    <div class="form-group">
+      <div *ngIf="error" id="errorMessage">{{errorMessage}}</div>
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" required [(ngModel)]="formData.firstName" name="firstName"
+        #firstName="ngModel">
+      <div [hidden]="firstName.pristine || firstName.valid" class="alert alert-danger">
+        First name is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" required [(ngModel)]="formData.lastName" name="lastName"
+        #lastName="ngModel">
+      <div [hidden]="lastName.pristine || lastName.valid" class="alert alert-danger">
+        Last name is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control" id="email" required
+        [(ngModel)]="formData.email" name="email" #email="ngModel">
+      <div [hidden]="email.pristine || email.valid" class="alert alert-danger">
+        Valid email is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" minlength="8" maxlength="15" class="form-control" id="username" required [(ngModel)]="formData.username"
+        name="username" #username="ngModel">
+      <div [hidden]="username.pristine || username.valid" class="alert alert-danger">
+        Username between 8-15 characters is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control" id="password" required
+        [(ngModel)]="formData.password" name="password" #password="ngModel">
+      <div [hidden]="password.pristine || password.valid" class="alert alert-danger">
+        Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" pattern={{formData.password}} class="form-control" id="confirmPassword" required
+        [(ngModel)]="formData.confirmPassword" name="confirmPassword" #confirmPassword="ngModel">
+      <div [hidden]="confirmPassword.pristine || confirmPassword.valid" class="alert alert-danger">
+        Passwords must match.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!signUpForm.form.valid" class="btn btn-success">Submit</button>
+
+  </form>
+</div>

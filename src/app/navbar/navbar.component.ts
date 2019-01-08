@@ -13,22 +13,21 @@ export class NavbarComponent implements OnInit {
 
   loggedIn = false
 
+  logoutClick = () => {
+    this.cookie.set('token', '')
+    this.changeLoggedIn()
+  }
   constructor(private cookie: CookieService, private auth: AuthService) {
     auth.sendLoggedInEvent.subscribe((event) => {
-      console.log('loggedIn: ', this.loggedIn)
       this.changeLoggedIn()
-      console.log('loggedIn: ', this.loggedIn)
     })
   }
 
   ngOnInit() {
     const check = this.cookie.get('token')
-    console.log('check: ', check)
     if (check === '') {
-      console.log('no token')
       this.loggedIn = false
     } else {
-      console.log('token')
       this.loggedIn = true
     }
   }

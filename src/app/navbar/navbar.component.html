@@ -6,10 +6,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" routerLink="/signup" [hidden]='loggedIn'>Sign Up<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link active" routerLink="/login" [hidden]='loggedIn'>Log In</a>
-      <a class="nav-item nav-link active" routerLink="/profile" [hidden]='!loggedIn'>Profile</a>
-      <a class="nav-item nav-link active" routerLink="/logout" [hidden]='!loggedIn'>Log Out</a>
+      <button class="nav-item nav-link active" routerLink="/signup" [hidden]='loggedIn'>Sign Up<span class="sr-only">(current)</span></button>
+      <button class="nav-item nav-link active" routerLink="/login" [hidden]='loggedIn'>Log In</button>
+      <button class="nav-item nav-link active" routerLink="/profile" [hidden]='!loggedIn'>Profile</button>
+      <button class="nav-item nav-link active" (click)="logoutClick()" routerLink="/" [hidden]='!loggedIn'>Log Out</button>
     </div>
   </div>
 </nav>

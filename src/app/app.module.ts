@@ -10,7 +10,8 @@ import { NavbarComponent } from './navbar/navbar.component'
 import { SplashPageComponent } from './splash-page/splash-page.component'
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component'
 import { LogInFormComponent } from './log-in-form/log-in-form.component'
-import { ProfileComponent } from './profile/profile.component'
+import { ProfileComponent } from './profile/profile.component';
+import { CreateTeamComponent } from './create-team/create-team.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProfileComponent } from './profile/profile.component'
     SplashPageComponent,
     SignUpFormComponent,
     LogInFormComponent,
-    ProfileComponent
+    ProfileComponent,
+    CreateTeamComponent
   ],
   imports: [
     BrowserModule,

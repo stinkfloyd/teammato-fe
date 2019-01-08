@@ -4,18 +4,18 @@
     <div class="form-group">
       <div *ngIf="error" id="errorMessage">{{errorMessage}}</div>
       <label for="firstName">First Name</label>
-      <input type="text" class="form-control" id="firstName" required [(ngModel)]="formData.firstName" name="firstName"
-        placeholder="Between 2-30 characters" minlength="2" maxlength="30" #firstName="ngModel">
+      <input type="text" class="form-control" id="firstName" pattern="^[a-zA-Z,.'-]+$" required [(ngModel)]="formData.firstName"
+        name="firstName" placeholder="Between 2-30 characters" minlength="2" maxlength="30" #firstName="ngModel">
       <div [hidden]="firstName.pristine || firstName.valid" class="alert alert-danger">
-        First name is required
+        First name is required between 2-30 alpha characters
       </div>
     </div>
     <div class="form-group">
       <label for="lastName">Last Name</label>
-      <input type="text" class="form-control" id="lastName" required [(ngModel)]="formData.lastName" name="lastName"
-        placeholder="Between 2-30 characters" minlength="2" maxlength="30" #lastName="ngModel">
+      <input type="text" class="form-control" id="lastName" required pattern="^[a-zA-Z1,.'-]+$" [(ngModel)]="formData.lastName"
+        name="lastName" placeholder="Between 2-30 characters" minlength="2" maxlength="30" #lastName="ngModel">
       <div [hidden]="lastName.pristine || lastName.valid" class="alert alert-danger">
-        Last name is required
+        Last name is required between 2-30 alpha characters
       </div>
     </div>
     <div class="form-group">

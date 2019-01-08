@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Log In</h1>
-  <form (ngSubmit)="onSubmit()" #logInForm="ngForm" autocomplete="off">
+  <form (ngSubmit)="login(logInForm)" #logInForm="ngForm" autocomplete="off">
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" class="form-control" id="username" required [(ngModel)]="formData.username" name="username"

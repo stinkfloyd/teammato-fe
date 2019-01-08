@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router'
 import { HttpHeaders } from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service'
+import { AuthService } from '../auth.service'
+import { NgForm } from '@angular/forms'
 
 @Component({
   selector: 'app-log-in-form',
@@ -21,30 +23,43 @@ export class LogInFormComponent implements OnInit {
   error = false
   errorMessage = ''
 
-  onSubmit() {
-    this.error = false
-    const newUser = {}
-    Object.keys(this.formData).forEach((key) => {
-      if (key === 'confirmPassword') { return }
-      newUser[key] = this.formData[key]
-    })
-    const httpPostOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }),
-      withCredentials: true,
-    }
+  // onSubmit() {
+  //   this.error = false
+  //   const newUser = {}
+  //   Object.keys(this.formData).forEach((key) => {
+  //     if (key === 'confirmPassword') { return }
+  //     newUser[key] = this.formData[key]
+  //   })
+  //   const httpPostOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json'
+  //     }),
+  //     withCredentials: true,
+  //   }
 
-    this.httpClient.post('http://localhost:3000/login', newUser, httpPostOptions)
-      .subscribe(async (data) => {
-        console.log('POST Successful ', data)
-        const dataString = await JSON.stringify(data)
-        this.cookie.set('token', dataString)
-        this.router.navigate(['/profile'])
+  //   this.httpClient.post('http://localhost:3000/login', newUser, httpPostOptions)
+  //     .subscribe(async (data) => {
+  //       console.log('POST Successful ', data)
+  //       const dataString = await JSON.stringify(data)
+  //       this.cookie.set('token', dataString)
+  //       this.router.navigate(['/profile'])
+  //     })
+  // }
+
+  login(form: NgForm): void {
+    this.authService.login(form.value)
+      .subscribe(result => {
+        if (result.success) {
+          this.goTo('profile')
+        }
       })
   }
 
-  constructor(private httpClient: HttpClient, private router: Router, private cookie: CookieService) { }
+  goTo(path): void {
+    this.router.navigateByUrl(path)
+  }
+
+  constructor(private httpClient: HttpClient, public authService: AuthService, public router: Router, private cookie: CookieService) { }
 
   ngOnInit() {
   }

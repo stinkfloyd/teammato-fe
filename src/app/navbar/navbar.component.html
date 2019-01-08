@@ -6,7 +6,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" routerLink="/signup">Sign Up<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" routerLink="/signup" [hidden]='loggedIn'>Sign Up<span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link active" routerLink="/login" [hidden]='loggedIn'>Log In</a>
     </div>
   </div>

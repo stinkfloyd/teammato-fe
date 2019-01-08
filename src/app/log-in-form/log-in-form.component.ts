@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router'
+import { HttpHeaders } from '@angular/common/http'
+import { CookieService } from 'ngx-cookie-service'
 
 @Component({
   selector: 'app-log-in-form',
@@ -14,6 +16,8 @@ export class LogInFormComponent implements OnInit {
     password: ''
   }
 
+
+
   error = false
   errorMessage = ''
 
@@ -24,25 +28,23 @@ export class LogInFormComponent implements OnInit {
       if (key === 'confirmPassword') { return }
       newUser[key] = this.formData[key]
     })
-    this.httpClient.post('http://localhost:3000/login', newUser)
-      .subscribe(data => {
+    const httpPostOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      withCredentials: true,
+    }
+
+    this.httpClient.post('http://localhost:3000/login', newUser, httpPostOptions)
+      .subscribe(async (data) => {
         console.log('POST Successful ', data)
+        const dataString = await JSON.stringify(data)
+        this.cookie.set('token', dataString)
         this.router.navigate(['/profile'])
-      }, error => {
-        this.error = true
-        console.log('POST ERROR ', error.error.constraint)
-        switch (error.error.constraint) {
-          case 'users_username_unique':
-            this.errorMessage = `Username is already taken.`
-            break
-          case 'users_email_unique':
-            this.errorMessage = `Email has already been used to sign up.`
-            break
-        }
       })
   }
 
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  constructor(private httpClient: HttpClient, private router: Router, private cookie: CookieService) { }
 
   ngOnInit() {
   }

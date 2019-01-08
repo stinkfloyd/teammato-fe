@@ -18,33 +18,8 @@ export class LogInFormComponent implements OnInit {
     password: ''
   }
 
-
-
   error = false
   errorMessage = ''
-
-  // onSubmit() {
-  //   this.error = false
-  //   const newUser = {}
-  //   Object.keys(this.formData).forEach((key) => {
-  //     if (key === 'confirmPassword') { return }
-  //     newUser[key] = this.formData[key]
-  //   })
-  //   const httpPostOptions = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json'
-  //     }),
-  //     withCredentials: true,
-  //   }
-
-  //   this.httpClient.post('http://localhost:3000/login', newUser, httpPostOptions)
-  //     .subscribe(async (data) => {
-  //       console.log('POST Successful ', data)
-  //       const dataString = await JSON.stringify(data)
-  //       this.cookie.set('token', dataString)
-  //       this.router.navigate(['/profile'])
-  //     })
-  // }
 
   login(form: NgForm): void {
     this.authService.login(form.value)
@@ -52,6 +27,9 @@ export class LogInFormComponent implements OnInit {
         if (result.success) {
           this.goTo('profile')
         }
+      }, error => {
+        this.error = true
+        this.errorMessage = `Invalid Username and/or Password`
       })
   }
 
@@ -62,6 +40,8 @@ export class LogInFormComponent implements OnInit {
   constructor(private httpClient: HttpClient, public authService: AuthService, public router: Router, private cookie: CookieService) { }
 
   ngOnInit() {
+    this.error = false
+    this.errorMessage = ''
   }
 
 }

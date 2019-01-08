@@ -5,7 +5,7 @@
       <div *ngIf="error" id="errorMessage">{{errorMessage}}</div>
       <label for="firstName">First Name</label>
       <input type="text" class="form-control" id="firstName" required [(ngModel)]="formData.firstName" name="firstName"
-        #firstName="ngModel">
+        placeholder="Between 2-30 characters" minlength="2" maxlength="30" #firstName="ngModel">
       <div [hidden]="firstName.pristine || firstName.valid" class="alert alert-danger">
         First name is required
       </div>
@@ -13,7 +13,7 @@
     <div class="form-group">
       <label for="lastName">Last Name</label>
       <input type="text" class="form-control" id="lastName" required [(ngModel)]="formData.lastName" name="lastName"
-        #lastName="ngModel">
+        placeholder="Between 2-30 characters" minlength="2" maxlength="30" #lastName="ngModel">
       <div [hidden]="lastName.pristine || lastName.valid" class="alert alert-danger">
         Last name is required
       </div>
@@ -21,7 +21,7 @@
     <div class="form-group">
       <label for="email">Email</label>
       <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control" id="email" required
-        [(ngModel)]="formData.email" name="email" #email="ngModel">
+        placeholder="Valid email is required" [(ngModel)]="formData.email" name="email" #email="ngModel">
       <div [hidden]="email.pristine || email.valid" class="alert alert-danger">
         Valid email is required
       </div>
@@ -29,14 +29,16 @@
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" minlength="8" maxlength="15" class="form-control" id="username" required [(ngModel)]="formData.username"
-        name="username" #username="ngModel">
+        pattern="^[a-zA-Z0-9-_]{8,15}$" name="username" placeholder="Between 8-15 alphanumeric characters only"
+        #username="ngModel">
       <div [hidden]="username.pristine || username.valid" class="alert alert-danger">
-        Username between 8-15 characters is required
+        Username between 8-15 alphanumeric characters is required
       </div>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
       <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control" id="password" required
+        placeholder="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
         [(ngModel)]="formData.password" name="password" #password="ngModel">
       <div [hidden]="password.pristine || password.valid" class="alert alert-danger">
         Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.
@@ -45,7 +47,8 @@
     <div class="form-group">
       <label for="confirmPassword">Confirm Password</label>
       <input type="password" pattern={{formData.password}} class="form-control" id="confirmPassword" required
-        [(ngModel)]="formData.confirmPassword" name="confirmPassword" #confirmPassword="ngModel">
+        placeholder="Passwords must match" [(ngModel)]="formData.confirmPassword" name="confirmPassword"
+        #confirmPassword="ngModel">
       <div [hidden]="confirmPassword.pristine || confirmPassword.valid" class="alert alert-danger">
         Passwords must match.
       </div>

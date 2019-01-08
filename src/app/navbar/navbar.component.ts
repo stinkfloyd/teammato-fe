@@ -22,15 +22,15 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    // const check = this.cookie.get('token')
-    // console.log('check: ', check)
-    // if (check === '') {
-    //   console.log('no token')
-    //   this.loggedIn = false
-    // } else {
-    //   console.log('token')
-    //   this.loggedIn = true
-    // }
+    const check = this.cookie.get('token')
+    console.log('check: ', check)
+    if (check === '') {
+      console.log('no token')
+      this.loggedIn = false
+    } else {
+      console.log('token')
+      this.loggedIn = true
+    }
   }
 
   changeLoggedIn() {

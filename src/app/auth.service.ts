@@ -26,15 +26,8 @@ export class AuthService {
         console.log(result)
         result.success = true
         this.save_token(result)
-      }),
-      catchError(this.handleError<any>('login'))
+      })
     )
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      return of(result as T)
-    }
   }
 
   private save_token(data) {

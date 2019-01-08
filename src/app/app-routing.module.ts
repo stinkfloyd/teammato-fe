@@ -4,12 +4,13 @@ import { SignUpFormComponent } from './sign-up-form/sign-up-form.component'
 import { LogInFormComponent } from './log-in-form/log-in-form.component'
 import { SplashPageComponent } from './splash-page/splash-page.component'
 import { ProfileComponent } from './profile/profile.component'
+import { AuthService } from './auth.service'
 
 const routes: Routes = [
   { path: '', component: SplashPageComponent },
   { path: 'signup', component: SignUpFormComponent },
   { path: 'login', component: LogInFormComponent },
-  { path: 'profile', component: ProfileComponent, }
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthService] }
 ]
 
 @NgModule({

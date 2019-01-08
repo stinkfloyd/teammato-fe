@@ -36,9 +36,4 @@ export class NavbarComponent implements OnInit {
     this.loggedIn = !this.loggedIn
     return
   }
-
-  OnChanges() {
-    console.log('Changes!')
-  }
-
 }

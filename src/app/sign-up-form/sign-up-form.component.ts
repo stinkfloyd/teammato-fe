@@ -34,7 +34,7 @@ export class SignUpFormComponent implements OnInit {
         this.router.navigate(['/login'])
       }, error => {
         this.error = true
-        console.log('POST ERROR ', error.error.constraint)
+        console.log('POST ERROR ', error)
         switch (error.error.constraint) {
           case 'users_username_unique':
             this.errorMessage = `Username is already taken.`

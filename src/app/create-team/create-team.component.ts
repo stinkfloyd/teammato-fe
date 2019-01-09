@@ -17,13 +17,21 @@ export class CreateTeamComponent implements OnInit {
   formData = {
     name: '',
   }
+  error = false
+  errorMessage = ''
 
   create(form: NgForm): void {
+    console.log('create')
     this.user.createTeam(form.value)
       .subscribe(result => {
         this.goTo('profile')
       }, error => {
-        console.log('error: ', error)
+        this.error = true
+        if (error.error.constraint === 'teams_name_unique') {
+          this.errorMessage = 'Team name already chosen. Please choose another'
+        } else {
+          this.errorMessage = 'Unknown error creating team, please try again.'
+        }
       })
   }
 

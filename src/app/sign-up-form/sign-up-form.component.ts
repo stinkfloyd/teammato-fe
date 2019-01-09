@@ -41,6 +41,8 @@ export class SignUpFormComponent implements OnInit {
           case 'users_email_unique':
             this.errorMessage = `Email has already been used to sign up.`
             break
+          default:
+            this.errorMessage = `Unknown error signing up, please try again.`
         }
       })
   }

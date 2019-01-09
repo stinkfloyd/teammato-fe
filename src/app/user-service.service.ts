@@ -20,4 +20,14 @@ export class UserService {
       })
     )
   }
+
+  joinTeam(teamName): Observable<any> {
+    // this gets the user
+    return this.http.post<any>('http://localhost:3000/teams/join', teamName, { withCredentials: true }).pipe(
+      tap((result) => {
+        console.log('result: ', result)
+        return result
+      })
+    )
+  }
 }

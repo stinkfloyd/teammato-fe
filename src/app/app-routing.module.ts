@@ -6,13 +6,15 @@ import { SplashPageComponent } from './splash-page/splash-page.component'
 import { ProfileComponent } from './profile/profile.component'
 import { AuthService } from './auth.service'
 import { CreateTeamComponent } from './create-team/create-team.component'
+import { JoinTeamComponent } from './join-team/join-team.component'
 
 const routes: Routes = [
   { path: '', component: SplashPageComponent },
   { path: 'signup', component: SignUpFormComponent },
   { path: 'login', component: LogInFormComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthService] },
-  { path: 'createTeam', component: CreateTeamComponent, canActivate: [AuthService] }
+  { path: 'createTeam', component: CreateTeamComponent, canActivate: [AuthService] },
+  { path: 'joinTeam', component: JoinTeamComponent, canActivate: [AuthService] }
 ]
 
 @NgModule({

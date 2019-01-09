@@ -10,6 +10,7 @@
       <button routerLink="/login" [hidden]='loggedIn'>Log In</button>
       <button routerLink="/profile" [hidden]='!loggedIn'>Profile</button>
       <button routerLink="/createTeam" [hidden]='!loggedIn'>Create a Team</button>
+      <button routerLink="/joinTeam" [hidden]='!loggedIn'>Join a Team</button>
       <button (click)="logoutClick()" routerLink="/" [hidden]='!loggedIn'>Log Out</button>
     </div>
   </div>

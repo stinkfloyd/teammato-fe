@@ -22,4 +22,18 @@ export class ProfileService {
       })
     )
   }
+
+  getCreatedTeams(): Observable<any> {
+    // this gets the teams the user has created
+    return this.http.get<any>('http://localhost:3000/teams/created', { withCredentials: true }).pipe(
+      tap(result => result)
+    )
+  }
+
+  getJoinedTeams(): Observable<any> {
+    // this gets the teams the user has joined
+    return this.http.get<any>('http://localhost:3000/teams/joined', { withCredentials: true }).pipe(
+      tap(result => result)
+    )
+  }
 }

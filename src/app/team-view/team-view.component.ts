@@ -1,0 +1,28 @@
+import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute, Router } from '@angular/router'
+import { UserService } from '../user-service.service'
+
+@Component({
+  selector: 'app-team-view',
+  templateUrl: './team-view.component.html',
+  styleUrls: ['./team-view.component.scss']
+})
+export class TeamViewComponent implements OnInit {
+  id: number
+  team = {}
+  constructor(private router: Router, private route: ActivatedRoute, private user: UserService) { }
+
+  ngOnInit() {
+    console.log('init')
+    this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10)
+    this.user.getTeam(this.id).subscribe(team => {
+      this.team = team
+    }, error => {
+      this.goTo('profile')
+    })
+  }
+
+  goTo(path): void {
+    this.router.navigateByUrl(path)
+  }
+}

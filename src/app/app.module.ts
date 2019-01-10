@@ -14,7 +14,8 @@ import { ProfileComponent } from './profile/profile.component'
 import { CreateTeamComponent } from './create-team/create-team.component'
 import { CreatedTeamsComponent } from './created-teams/created-teams.component'
 import { JoinedTeamsComponent } from './joined-teams/joined-teams.component'
-import { JoinTeamComponent } from './join-team/join-team.component'
+import { JoinTeamComponent } from './join-team/join-team.component';
+import { TeamViewComponent } from './team-view/team-view.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { JoinTeamComponent } from './join-team/join-team.component'
     CreateTeamComponent,
     CreatedTeamsComponent,
     JoinedTeamsComponent,
-    JoinTeamComponent
+    JoinTeamComponent,
+    TeamViewComponent
   ],
   imports: [
     BrowserModule,

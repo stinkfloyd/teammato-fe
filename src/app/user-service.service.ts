@@ -30,4 +30,14 @@ export class UserService {
       })
     )
   }
+
+  getTeam(id): Observable<any> {
+    // this gets the team with the given id
+    return this.http.get<any>(`http://localhost:3000/teams/team/${id}`, { withCredentials: true }).pipe(
+      tap((result) => {
+        console.log('result: ', result)
+        return result
+      })
+    )
+  }
 }

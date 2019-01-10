@@ -25,7 +25,6 @@ export class UserService {
     // this gets the user
     return this.http.post<any>('http://localhost:3000/teams/join', teamName, { withCredentials: true }).pipe(
       tap((result) => {
-        console.log('result: ', result)
         return result
       })
     )
@@ -35,7 +34,6 @@ export class UserService {
     // this gets the team with the given id
     return this.http.get<any>(`http://localhost:3000/teams/team/${id}`, { withCredentials: true }).pipe(
       tap((result) => {
-        console.log('result: ', result)
         return result
       })
     )

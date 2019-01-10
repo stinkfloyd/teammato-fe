@@ -23,14 +23,12 @@ export class JoinTeamComponent implements OnInit {
 
   join(form: NgForm): void {
     const name = form.value.name.toLowerCase()
-    console.log('name: ', name)
     this.user.joinTeam({ name: name })
       .subscribe(result => {
         if (result) {
           this.goTo('profile')
         }
       }, error => {
-        console.log('error? :', error)
         this.error = true
         switch (error.error.error.message) {
           case 'Team does not exist':

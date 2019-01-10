@@ -13,7 +13,6 @@ export class TeamViewComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private user: UserService) { }
 
   ngOnInit() {
-    console.log('init')
     this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10)
     this.user.getTeam(this.id).subscribe(team => {
       this.team = team

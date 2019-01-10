@@ -21,7 +21,6 @@ export class CreateTeamComponent implements OnInit {
   errorMessage = ''
 
   create(form: NgForm): void {
-    console.log('create')
     this.user.createTeam(form.value)
       .subscribe(result => {
         this.goTo('profile')

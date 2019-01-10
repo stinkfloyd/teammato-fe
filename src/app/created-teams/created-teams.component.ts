@@ -21,7 +21,6 @@ export class CreatedTeamsComponent implements OnInit {
   ngOnInit() {
     this.profile.getCreatedTeams().subscribe(result => {
       this.createdTeamsList = result
-      console.log('createdTeamsList: ', this.createdTeamsList)
     })
   }
 

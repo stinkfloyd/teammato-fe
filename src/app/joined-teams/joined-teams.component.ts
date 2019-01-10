@@ -20,7 +20,6 @@ export class JoinedTeamsComponent implements OnInit {
   ngOnInit() {
     this.profile.getJoinedTeams().subscribe(result => {
       this.joinedTeamsList = result
-      console.log('joinedTeamsList: ', this.joinedTeamsList)
     })
   }
 

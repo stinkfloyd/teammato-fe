@@ -22,7 +22,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.profile.getProfile().subscribe(result => {
       this.user = result
-      console.log('user: ', this.user)
     })
   }
 

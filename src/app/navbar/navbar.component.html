@@ -1,17 +1,37 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" routerLink="/">Teammato</a>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <button routerLink="/signup" [hidden]='loggedIn'>Sign Up<span class="sr-only">(current)</span></button>
-      <button routerLink="/login" [hidden]='loggedIn'>Log In</button>
-      <button routerLink="/profile" [hidden]='!loggedIn'>Profile</button>
-      <button routerLink="/createTeam" [hidden]='!loggedIn'>Create a Team</button>
-      <button routerLink="/joinTeam" [hidden]='!loggedIn'>Join a Team</button>
-      <button (click)="logoutClick()" routerLink="/" [hidden]='!loggedIn'>Log Out</button>
-    </div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/">Teammato</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/signup" [hidden]='loggedIn'>Sign Up<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login" [hidden]='loggedIn'>Log In</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/profile" [hidden]='!loggedIn'>Profile</a>
+      </li>
+      <li class="nav-item dropdown" [hidden]='!loggedIn'>
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Team Options
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/createTeam">Create a Team</a>
+          <a class="dropdown-item" routerLink="/joinTeam">Join a Team</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logoutClick()" routerLink="/" [hidden]='!loggedIn'>Log Out</a>
+      <li class="nav-item"></li>
+    </ul>
   </div>
 </nav>

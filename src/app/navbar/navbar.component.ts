@@ -17,8 +17,9 @@ export class NavbarComponent implements OnInit {
     this.cookie.set('token', '')
     this.changeLoggedIn()
   }
+
   constructor(private cookie: CookieService, private auth: AuthService) {
-    auth.sendLoggedInEvent.subscribe((event) => {
+    auth.sendLoggedInEvent.subscribe(() => {
       this.changeLoggedIn()
     })
   }

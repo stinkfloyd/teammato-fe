@@ -15,7 +15,12 @@ export class AppComponent {
   profile = {}
 
   constructor(private sidebar: SidebarService, private profileService: ProfileService) {
-    sidebar.sidebarToggle.subscribe(() => {
+    sidebar.sidebarToggle.subscribe((type) => {
+      console.log('type: ', type)
+      if (type === 'logout') {
+        this._opened = false
+        return
+      }
       this._toggleSidebar()
     })
   }

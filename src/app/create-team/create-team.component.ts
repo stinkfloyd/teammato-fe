@@ -23,7 +23,7 @@ export class CreateTeamComponent implements OnInit {
   create(form: NgForm): void {
     this.user.createTeam(form.value)
       .subscribe(result => {
-        this.goTo('profile')
+        this.goTo('teamList')
       }, error => {
         this.error = true
         if (error.error.constraint === 'teams_name_unique') {

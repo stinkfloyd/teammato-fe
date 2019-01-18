@@ -26,7 +26,7 @@ export class LogInFormComponent implements OnInit {
     this.authService.login(form.value)
       .subscribe(result => {
         if (result.success) {
-          this.goTo('profile')
+          this.goTo('teamList')
         }
       }, error => {
         this.error = true

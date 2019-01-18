@@ -17,7 +17,7 @@ export class TeamViewComponent implements OnInit {
     this.user.getTeam(this.id).subscribe(team => {
       this.team = team
     }, error => {
-      this.goTo('profile')
+      this.goTo('teamList')
     })
   }
 

@@ -26,7 +26,7 @@ export class JoinTeamComponent implements OnInit {
     this.user.joinTeam({ name: name })
       .subscribe(result => {
         if (result) {
-          this.goTo('profile')
+          this.goTo('teamList')
         }
       }, error => {
         this.error = true

@@ -15,7 +15,8 @@ import { CreateTeamComponent } from './create-team/create-team.component'
 import { CreatedTeamsComponent } from './created-teams/created-teams.component'
 import { JoinedTeamsComponent } from './joined-teams/joined-teams.component'
 import { JoinTeamComponent } from './join-team/join-team.component';
-import { TeamViewComponent } from './team-view/team-view.component'
+import { TeamViewComponent } from './team-view/team-view.component';
+import { TeamListComponent } from './team-list/team-list.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TeamViewComponent } from './team-view/team-view.component'
     CreatedTeamsComponent,
     JoinedTeamsComponent,
     JoinTeamComponent,
-    TeamViewComponent
+    TeamViewComponent,
+    TeamListComponent
   ],
   imports: [
     BrowserModule,

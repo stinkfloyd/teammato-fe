@@ -14,8 +14,14 @@ import { ProfileService } from '../profile.service'
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  user = {}
 
-  constructor(private http: HttpClient, private profile: ProfileService, public router: Router, private cookie: CookieService) { }
+  constructor(private http: HttpClient, private profile: ProfileService, public router: Router, private cookie: CookieService) {
+    profile.sendUserEvent.subscribe((user) => {
+      console.log('user in profile component: ', user)
+      this.user = user
+    })
+  }
 
   ngOnInit() {
 

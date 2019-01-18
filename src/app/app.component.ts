@@ -1,5 +1,7 @@
 import { Component } from '@angular/core'
 import { SidebarService } from './sidebar.service'
+import { ProfileService } from './profile.service'
+import { Profile } from 'selenium-webdriver/firefox'
 
 @Component({
   selector: 'app-root',
@@ -10,14 +12,19 @@ import { SidebarService } from './sidebar.service'
 export class AppComponent {
   _opened = false
   title = 'Teammato'
+  profile = {}
 
-  constructor(private sidebar: SidebarService) {
+  constructor(private sidebar: SidebarService, private profileService: ProfileService) {
     sidebar.sidebarToggle.subscribe(() => {
       this._toggleSidebar()
     })
   }
 
   _toggleSidebar() {
-    this._opened = !this._opened
+    this.profileService.getProfile()
+      .subscribe((profile) => {
+        this._opened = !this._opened
+      })
+
   }
 }

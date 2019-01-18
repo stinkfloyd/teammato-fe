@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service'
+import { SidebarModule } from 'ng-sidebar'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
@@ -14,8 +15,8 @@ import { ProfileComponent } from './profile/profile.component'
 import { CreateTeamComponent } from './create-team/create-team.component'
 import { CreatedTeamsComponent } from './created-teams/created-teams.component'
 import { JoinedTeamsComponent } from './joined-teams/joined-teams.component'
-import { JoinTeamComponent } from './join-team/join-team.component';
-import { TeamViewComponent } from './team-view/team-view.component';
+import { JoinTeamComponent } from './join-team/join-team.component'
+import { TeamViewComponent } from './team-view/team-view.component'
 import { TeamListComponent } from './team-list/team-list.component'
 
 @NgModule({
@@ -38,6 +39,7 @@ import { TeamListComponent } from './team-list/team-list.component'
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    SidebarModule.forRoot(),
   ],
   providers: [
     CookieService,

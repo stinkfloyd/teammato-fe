@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input, Output } from '@angular/core'
 import { CookieService } from 'ngx-cookie-service'
 import { NavbarService } from '../navbar.service'
 import { AuthService } from '../auth.service'
 import { logging } from 'protractor'
+import { SidebarService } from '../sidebar.service'
+import { Sidebar } from 'ng-sidebar'
+import { EventEmitter } from 'events'
+
 
 @Component({
   selector: 'app-navbar',
@@ -11,14 +15,22 @@ import { logging } from 'protractor'
 })
 export class NavbarComponent implements OnInit {
 
+  @Output() _sidebarToggle: EventEmitter = new EventEmitter()
+
+
   loggedIn = false
+  _opened = false
 
   logoutClick = () => {
     this.cookie.set('token', '')
     this.changeLoggedIn()
   }
 
-  constructor(private cookie: CookieService, private auth: AuthService) {
+  sidebarToggle = (event) => {
+    this.sidebar.sidebarToggle.emit()
+  }
+
+  constructor(private cookie: CookieService, private auth: AuthService, private sidebar: SidebarService) {
     auth.sendLoggedInEvent.subscribe(() => {
       this.changeLoggedIn()
     })

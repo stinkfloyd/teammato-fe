@@ -15,14 +15,10 @@ import { ProfileService } from '../profile.service'
 })
 export class ProfileComponent implements OnInit {
 
-  user = {}
-
   constructor(private http: HttpClient, private profile: ProfileService, public router: Router, private cookie: CookieService) { }
 
   ngOnInit() {
-    this.profile.getProfile().subscribe(result => {
-      this.user = result
-    })
+
   }
 
 }

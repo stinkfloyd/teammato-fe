@@ -1,4 +1,15 @@
-<app-navbar></app-navbar>
+<ng-sidebar-container style="height: 100vh">
+  <!-- A sidebar -->
+  <ng-sidebar [(opened)]="_opened">
+    <div id="sidebarContent">
+      <app-profile></app-profile>
+    </div>
+  </ng-sidebar>
 
-<!-- This is where things change -->
-<router-outlet></router-outlet>
+  <!-- Page content -->
+  <div ng-sidebar-content>
+    <app-navbar></app-navbar>
+    <!-- This is where things change -->
+    <router-outlet></router-outlet>
+  </div>
+</ng-sidebar-container>

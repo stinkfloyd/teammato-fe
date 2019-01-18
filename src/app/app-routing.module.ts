@@ -8,7 +8,7 @@ import { AuthService } from './auth.service'
 import { CreateTeamComponent } from './create-team/create-team.component'
 import { JoinTeamComponent } from './join-team/join-team.component'
 import { TeamViewComponent } from './team-view/team-view.component'
-import { TeamListComponent } from './team-list/team-list.component';
+import { TeamListComponent } from './team-list/team-list.component'
 
 const routes: Routes = [
   { path: '', component: SplashPageComponent },

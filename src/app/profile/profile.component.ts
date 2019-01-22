@@ -14,12 +14,19 @@ import { ProfileService } from '../profile.service'
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  user = {}
+  user = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    username: '',
+    desc: '',
+    photoUrl: '',
+  }
 
   constructor(private http: HttpClient, private profile: ProfileService, public router: Router, private cookie: CookieService) {
     profile.sendUserEvent.subscribe((user) => {
       console.log('user in profile component: ', user)
-      this.user = user
+      this.user = { ...user }
     })
   }
 

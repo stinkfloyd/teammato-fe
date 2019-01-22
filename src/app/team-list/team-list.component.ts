@@ -15,13 +15,20 @@ import { ProfileService } from '../profile.service'
 })
 export class TeamListComponent implements OnInit {
 
-  user = {}
+  user = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    username: '',
+    desc: '',
+    photoUrl: '',
+  }
 
   constructor(private http: HttpClient, private profile: ProfileService, public router: Router, private cookie: CookieService) { }
 
   ngOnInit() {
     this.profile.getProfile().subscribe(result => {
-      this.user = result
+      this.user = { ...result }
     })
   }
 

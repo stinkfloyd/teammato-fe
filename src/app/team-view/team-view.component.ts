@@ -9,13 +9,15 @@ import { UserService } from '../user-service.service'
 })
 export class TeamViewComponent implements OnInit {
   id: number
-  team = {}
+  team = {
+    name: ''
+  }
   constructor(private router: Router, private route: ActivatedRoute, private user: UserService) { }
 
   ngOnInit() {
     this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10)
     this.user.getTeam(this.id).subscribe(team => {
-      this.team = team
+      this.team = { ...team }
     }, error => {
       this.goTo('teamList')
     })

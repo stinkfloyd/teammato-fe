@@ -5,6 +5,8 @@ import { catchError, tap } from 'rxjs/internal/operators'
 import { CookieService } from 'ngx-cookie-service'
 import { Router } from '@angular/router'
 
+const baseAPI = 'http://obscure-reaches-16352.herokuapp.com'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +18,7 @@ export class ProfileService {
 
   getProfile(): Observable<any> {
     // this gets the user
-    return this.http.get<any>('http://localhost:3000/profile', { withCredentials: true }).pipe(
+    return this.http.get<any>(`${baseAPI}/profile`, { withCredentials: true }).pipe(
       tap((result) => {
         this.sendUserEvent.emit(result)
       })
@@ -25,14 +27,14 @@ export class ProfileService {
 
   getCreatedTeams(): Observable<any> {
     // this gets the teams the user has created
-    return this.http.get<any>('http://localhost:3000/teams/created', { withCredentials: true }).pipe(
+    return this.http.get<any>(`${baseAPI}/teams/created`, { withCredentials: true }).pipe(
       tap(result => result)
     )
   }
 
   getJoinedTeams(): Observable<any> {
     // this gets the teams the user has joined
-    return this.http.get<any>('http://localhost:3000/teams/joined', { withCredentials: true }).pipe(
+    return this.http.get<any>(`${baseAPI}/teams/joined`, { withCredentials: true }).pipe(
       tap(result => result)
     )
   }

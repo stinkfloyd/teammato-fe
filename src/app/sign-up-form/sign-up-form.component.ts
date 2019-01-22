@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router'
 
+const baseAPI = 'http://obscure-reaches-16352.herokuapp.com'
+
 @Component({
   selector: 'app-sign-up-form',
   templateUrl: './sign-up-form.component.html',
@@ -28,7 +30,7 @@ export class SignUpFormComponent implements OnInit {
       if (key === 'confirmPassword') { return }
       newUser[key] = this.formData[key]
     })
-    this.httpClient.post('http://localhost:3000/users', newUser)
+    this.httpClient.post(`${baseAPI}/users`, newUser)
       .subscribe(data => {
         this.router.navigate(['/login'])
       }, error => {

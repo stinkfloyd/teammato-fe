@@ -18,6 +18,8 @@ import { JoinedTeamsComponent } from './joined-teams/joined-teams.component'
 import { JoinTeamComponent } from './join-team/join-team.component'
 import { TeamViewComponent } from './team-view/team-view.component'
 import { TeamListComponent } from './team-list/team-list.component'
+import { SocketService } from './socket.service';
+import { ChatComponent } from './chat/chat.component'
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { TeamListComponent } from './team-list/team-list.component'
     JoinedTeamsComponent,
     JoinTeamComponent,
     TeamViewComponent,
-    TeamListComponent
+    TeamListComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { TeamListComponent } from './team-list/team-list.component'
   ],
   providers: [
     CookieService,
+    SocketService
   ],
   bootstrap: [AppComponent]
 })

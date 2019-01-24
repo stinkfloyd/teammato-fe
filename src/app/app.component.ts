@@ -2,6 +2,7 @@ import { Component } from '@angular/core'
 import { SidebarService } from './sidebar.service'
 import { ProfileService } from './profile.service'
 import { Profile } from 'selenium-webdriver/firefox'
+import { SocketService } from './socket.service'
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent {
   title = 'Teammato'
   profile = {}
 
-  constructor(private sidebar: SidebarService, private profileService: ProfileService) {
+  constructor(private sidebar: SidebarService, private profileService: ProfileService, ) {
     sidebar.sidebarToggle.subscribe((type) => {
       if (type === 'logout') {
         this._opened = false

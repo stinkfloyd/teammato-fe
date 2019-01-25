@@ -10,7 +10,7 @@ import { UserService } from '../user-service.service'
 })
 export class ChatComponent implements OnInit {
   message: string
-  messages: string[] = []
+  messages: object[] = []
   timestamp: Date
 
   @Input() username: string
@@ -20,16 +20,21 @@ export class ChatComponent implements OnInit {
 
   sendMessage() {
     this.timestamp = new Date(Date.now())
-    this.socketService.sendMessage(this.message)
+    const messageObj = {
+      message: this.message,
+      user: this.username,
+      timestamp: this.timestamp
+    }
+    this.socketService.sendMessage(messageObj)
     this.message = ''
     console.log('test', this.timestamp)
   }
 
   ngOnInit() {
-
+    this.timestamp = new Date(Date.now())
     this.socketService
       .getMessages()
-      .subscribe((message: string) => {
+      .subscribe((message: object) => {
         this.messages.unshift(message)
       })
   }

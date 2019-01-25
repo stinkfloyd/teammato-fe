@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 import { SocketService } from '../socket.service'
 import { UserService } from '../user-service.service'
+
 
 @Component({
   selector: 'app-chat',
@@ -10,23 +11,26 @@ import { UserService } from '../user-service.service'
 export class ChatComponent implements OnInit {
   message: string
   messages: string[] = []
-  messageObj = { message: '', team: {} }
+  timestamp: Date
+
+  @Input() username: string
 
   constructor(private socketService: SocketService, private userService: UserService) {
   }
 
   sendMessage() {
-    this.messageObj.message = this.message
-    this.messageObj.team = this.userService
+    this.timestamp = new Date(Date.now())
     this.socketService.sendMessage(this.message)
     this.message = ''
+    console.log('test', this.timestamp)
   }
 
   ngOnInit() {
+
     this.socketService
       .getMessages()
       .subscribe((message: string) => {
-        this.messages.push(message)
+        this.messages.unshift(message)
       })
   }
 }

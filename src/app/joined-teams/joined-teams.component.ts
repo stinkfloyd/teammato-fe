@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 import { Router } from '@angular/router'
 import { HttpHeaders, HttpClient } from '@angular/common/http'
 import { CookieService } from 'ngx-cookie-service'
@@ -14,6 +14,7 @@ import { ProfileService } from '../profile.service'
 export class JoinedTeamsComponent implements OnInit {
 
   joinedTeamsList = []
+
 
   constructor(private http: HttpClient, private profile: ProfileService, public router: Router, private cookie: CookieService) { }
 

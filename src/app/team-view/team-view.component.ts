@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { UserService } from '../user-service.service'
 import { SocketService } from '../socket.service'
+import { ProfileService } from '../profile.service'
 
 @Component({
   selector: 'app-team-view',
@@ -11,8 +12,12 @@ import { SocketService } from '../socket.service'
 export class TeamViewComponent implements OnInit {
   id: number
   team = {
-    name: ''
+    name: '',
+    username: ''
   }
+
+
+  // tslint:disable-next-line:max-line-length
   constructor(private router: Router, private route: ActivatedRoute, private user: UserService, public socketService: SocketService) { }
 
   ngOnInit() {
@@ -20,6 +25,7 @@ export class TeamViewComponent implements OnInit {
     this.user.getTeam(this.id).subscribe(team => {
       this.team = { ...team }
       this.socketService.sendTeam(team)
+      console.log('team.username: ', team.username)
     }, error => {
       this.goTo('teamList')
     })

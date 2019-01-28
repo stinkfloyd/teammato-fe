@@ -1,18 +1,14 @@
-* {
-  scrollbar-width: 3px;
-}
-
 #chatbox {
 
   padding: .5em;
   height: 30vh;
-  overflow-y: scroll;
 }
 
 #chatbox-body::-webkit-scrollbar {
   overflow: hidden;
   overflow-y: scroll;
-
+  overflow-x: hidden;
+  overflow-wrap: break-word;
 }
 
 #whole {
@@ -35,4 +31,13 @@ form {
 button {
   margin-left: 3px;
   width: 8em;
+}
+
+.chattext {
+  width: 100%;
+  overflow-wrap: break-word;
+}
+
+#head {
+  border-bottom: 2px solid black;
 }

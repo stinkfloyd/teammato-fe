@@ -1,14 +1,17 @@
 <div class="container-fluid" id="whole">
   <div class="box-header with-border">
-    <h3 class="box-title">Group Chat</h3>
+    <h1 class="box-title" id="head">Group Chat</h1>
   </div>
   <div class="row" id="chatbox">
-    <div class="col-md-6 pull-left">
+    <div class="col-md-12 pull-left">
       <div id="chatbox-body">
         <!-- Conversations are loaded here -->
-        <div *ngFor="let message of messages">
-          <strong>{{message.user | titlecase}}</strong>({{message.timestamp | date:'MM/dd/yyyy::h:mma'}}):
-          {{message.message}}
+        <div *ngFor="let message of messages" class="col-12-sm">
+          <div class="chattext">
+            <strong>{{message.user | titlecase}}</strong>({{message.timestamp |
+            date:'MM/dd/yyyy@h:mma'}}):
+            {{message.message}}
+          </div>
         </div>
       </div>
     </div>

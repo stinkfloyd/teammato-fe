@@ -19,7 +19,8 @@ import { JoinTeamComponent } from './join-team/join-team.component'
 import { TeamViewComponent } from './team-view/team-view.component'
 import { TeamListComponent } from './team-list/team-list.component'
 import { SocketService } from './socket.service';
-import { ChatComponent } from './chat/chat.component'
+import { ChatComponent } from './chat/chat.component';
+import { GoalsComponent } from './goals/goals.component'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ChatComponent } from './chat/chat.component'
     JoinTeamComponent,
     TeamViewComponent,
     TeamListComponent,
-    ChatComponent
+    ChatComponent,
+    GoalsComponent
   ],
   imports: [
     BrowserModule,

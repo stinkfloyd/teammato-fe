@@ -15,6 +15,7 @@ export class TeamViewComponent implements OnInit {
     name: '',
     username: '',
   }
+  edit: false
 
 
   // tslint:disable-next-line:max-line-length

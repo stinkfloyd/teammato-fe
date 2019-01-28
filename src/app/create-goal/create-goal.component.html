@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Add Goal</h1>
+  <form (ngSubmit)="create(createGoalForm)" #createGoalForm="ngForm" autocomplete="off">
+    <div *ngIf="error" id="errorMessage">{{errorMessage}}</div>
+    <div class="form-group">
+      <label for="name"><strong>Title:</strong></label>
+      <input type="text" placeholder="Enter a title for goal..." class="form-control" id="username" required
+        [(ngModel)]="formData.title" name="title" #title="ngModel">
+      <label for="name"><strong>Goal Description:</strong></label>
+      <input type="text" placeholder="Enter a description for goal..." class="form-control" id="username" required
+        [(ngModel)]="formData.desc" name="desc" #desc="ngModel">
+    </div>
+    <button type="submit" [disabled]="!createGoalForm.form.valid" class="btn btn-success">Submit</button>
+
+  </form>
+</div>

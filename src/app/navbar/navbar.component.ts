@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
 
   logoutClick = () => {
     this.sidebar.sidebarToggle.emit('logout')
-    this.cookie.set('token', '')
+    this.cookie.delete('token')
     this.changeLoggedIn()
   }
 

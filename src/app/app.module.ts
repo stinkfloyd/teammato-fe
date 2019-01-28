@@ -20,7 +20,8 @@ import { TeamViewComponent } from './team-view/team-view.component'
 import { TeamListComponent } from './team-list/team-list.component'
 import { SocketService } from './socket.service';
 import { ChatComponent } from './chat/chat.component';
-import { GoalsComponent } from './goals/goals.component'
+import { GoalsComponent } from './goals/goals.component';
+import { CreateGoalComponent } from './create-goal/create-goal.component'
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { GoalsComponent } from './goals/goals.component'
     TeamViewComponent,
     TeamListComponent,
     ChatComponent,
-    GoalsComponent
+    GoalsComponent,
+    CreateGoalComponent
   ],
   imports: [
     BrowserModule,

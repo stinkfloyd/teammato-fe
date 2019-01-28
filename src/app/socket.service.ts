@@ -22,6 +22,10 @@ export class SocketService {
     this.socket.emit('new-message', message)
   }
 
+  public sendGoalAdded(goal) {
+    this.socket.emit('new-goal', goal)
+  }
+
   public getMessages = () => {
     return Observable.create((observer) => {
       this.socket.on('new-message', (message) => {

@@ -33,4 +33,12 @@ export class SocketService {
       })
     })
   }
+
+  public getGoals = () => {
+    return Observable.create((observer) => {
+      this.socket.on('new-goal', (goal) => {
+        observer.next(goal)
+      })
+    })
+  }
 }

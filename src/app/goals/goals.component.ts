@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core'
 import { identifierModuleUrl } from '@angular/compiler'
 import { GoalService } from '../goal.service'
 import { SocketService } from '../socket.service'
+import { Socket } from 'dgram'
 
 @Component({
   selector: 'app-goals',
@@ -20,6 +21,9 @@ export class GoalsComponent implements OnInit {
 
   ngOnInit() {
     this.getGoals()
+    this.socket.getGoals().subscribe((goal: object) => {
+      this.goalList.push(goal)
+    })
   }
 
   getGoals = () => {

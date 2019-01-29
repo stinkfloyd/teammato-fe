@@ -7,7 +7,7 @@ import { tap } from 'rxjs/internal/operators'
 import { SocketService } from './socket.service'
 
 
-const baseAPI = 'http://localhost:3000'
+const baseAPI = 'https://obscure-reaches-16352.herokuapp.com'
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +57,15 @@ export class GoalService {
     return this.http.put<any>(`${baseAPI}/goal/${id}/uncomplete`, username, { withCredentials: true }).pipe(
       tap((result) => {
         this.socket.sendGoalUncompleted(result)
+        return result
+      })
+    )
+  }
+
+  deleteGoal(id): Observable<any> {
+    return this.http.delete<any>(`${baseAPI}/goal/${id}`, { withCredentials: true }).pipe(
+      tap((result) => {
+        this.socket.sendGoalDeleted(result)
         return result
       })
     )

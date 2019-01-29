@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router'
 
-const baseAPI = 'http://localhost:3000'
+const baseAPI = 'https://obscure-reaches-16352.herokuapp.com'
 
 @Component({
   selector: 'app-sign-up-form',

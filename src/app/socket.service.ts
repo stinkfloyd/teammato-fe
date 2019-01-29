@@ -7,7 +7,7 @@ import { Observable } from 'rxjs'
 })
 export class SocketService {
 
-  private url = 'http://localhost:3000'
+  private url = 'https://obscure-reaches-16352.herokuapp.com'
   private socket
 
   constructor() {
@@ -36,6 +36,10 @@ export class SocketService {
 
   public sendGoalUncompleted(goal) {
     this.socket.emit('goal-uncompleted', goal)
+  }
+
+  public sendGoalDeleted(goal) {
+    this.socket.emit('goal-deleted', goal)
   }
 
   public getMessages = () => {
@@ -78,4 +82,11 @@ export class SocketService {
     })
   }
 
+  public goalDeleted = () => {
+    return Observable.create((observer) => {
+      this.socket.on('goal-deleted', (goal) => {
+        observer.next(goal)
+      })
+    })
+  }
 }

@@ -37,6 +37,9 @@ export class GoalsComponent implements OnInit {
     this.socket.unCompletedGoals().subscribe((goal: object) => {
       this.getGoals()
     })
+    this.socket.goalDeleted().subscribe((goal: object) => {
+      this.getGoals()
+    })
   }
 
   getGoals = () => {
@@ -76,6 +79,12 @@ export class GoalsComponent implements OnInit {
     const user = { username: this.username }
     this.goals.unCompleteGoal(event.target.id, user).subscribe((goal) => {
       console.log('goal (acceptGoal result): ', goal)
+      this.getGoals()
+    })
+  }
+
+  removeGoal = (event) => {
+    this.goals.deleteGoal(event.target.id).subscribe((goal) => {
       this.getGoals()
     })
   }

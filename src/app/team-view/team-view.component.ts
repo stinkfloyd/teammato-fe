@@ -14,6 +14,7 @@ export class TeamViewComponent implements OnInit {
   team = {
     name: '',
     username: '',
+    creator_username: '',
   }
   edit: false
 

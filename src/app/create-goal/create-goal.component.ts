@@ -30,9 +30,9 @@ export class CreateGoalComponent implements OnInit {
   error = false
   errorMessage = ''
 
-  goalSubmit(goal: any) {
-    this.onGoalSubmit.emit(goal)
-  }
+  // goalSubmit(goal: any) {
+  //   this.onGoalSubmit.emit(goal)
+  // }
 
   create(form: NgForm): void {
     console.log(form.value)
@@ -47,7 +47,6 @@ export class CreateGoalComponent implements OnInit {
       .subscribe(result => {
         this.formData.title = ''
         this.formData.desc = ''
-        this.onGoalSubmit.emit(result)
       }, error => {
         console.log('error: ', error)
       })

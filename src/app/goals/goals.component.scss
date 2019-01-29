@@ -1,6 +1,11 @@
 #goals {
   border: 2px solid black;
-  margin-top: 2em;
+  margin: 1px;
+}
+
+.goalScroll {
+  height: 300px;
+  overflow: scroll;
 }
 
 #head {
@@ -11,4 +16,13 @@
 #goalEdit {
   border-bottom: 2px solid black;
   padding: 15px;
+}
+
+#goalDiv {
+  width: auto;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr)
 }

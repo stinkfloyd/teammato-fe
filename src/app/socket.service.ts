@@ -26,6 +26,18 @@ export class SocketService {
     this.socket.emit('new-goal', goal)
   }
 
+  public sendGoalAccepted(goal) {
+    this.socket.emit('goal-accepted', goal)
+  }
+
+  public sendGoalCompleted(goal) {
+    this.socket.emit('goal-completed', goal)
+  }
+
+  public sendGoalUncompleted(goal) {
+    this.socket.emit('goal-uncompleted', goal)
+  }
+
   public getMessages = () => {
     return Observable.create((observer) => {
       this.socket.on('new-message', (message) => {
@@ -41,4 +53,29 @@ export class SocketService {
       })
     })
   }
+
+  public acceptedGoals = () => {
+    return Observable.create((observer) => {
+      this.socket.on('goal-accepted', (goal) => {
+        observer.next(goal)
+      })
+    })
+  }
+
+  public completedGoals = () => {
+    return Observable.create((observer) => {
+      this.socket.on('goal-completed', (goal) => {
+        observer.next(goal)
+      })
+    })
+  }
+
+  public unCompletedGoals = () => {
+    return Observable.create((observer) => {
+      this.socket.on('goal-uncompleted', (goal) => {
+        observer.next(goal)
+      })
+    })
+  }
+
 }

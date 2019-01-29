@@ -35,4 +35,30 @@ export class GoalService {
     )
   }
 
+  acceptGoal(id, username): Observable<any> {
+    return this.http.put<any>(`${baseAPI}/goal/${id}`, username, { withCredentials: true }).pipe(
+      tap((result) => {
+        this.socket.sendGoalAccepted(result)
+        return result
+      })
+    )
+  }
+
+  completeGoal(id, username): Observable<any> {
+    return this.http.put<any>(`${baseAPI}/goal/${id}/completed`, username, { withCredentials: true }).pipe(
+      tap((result) => {
+        this.socket.sendGoalCompleted(result)
+        return result
+      })
+    )
+  }
+
+  unCompleteGoal(id, username): Observable<any> {
+    return this.http.put<any>(`${baseAPI}/goal/${id}/uncomplete`, username, { withCredentials: true }).pipe(
+      tap((result) => {
+        this.socket.sendGoalUncompleted(result)
+        return result
+      })
+    )
+  }
 }

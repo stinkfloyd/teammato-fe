@@ -1,6 +1,7 @@
 <div class="container-fluid" id="whole">
   <div class="box-header with-border">
     <h1 class="box-title" id="head">Group Chat</h1>
+    <div class="bottomBorder"></div>
   </div>
   <div class="row" id="chatbox">
     <div class="col-md-12 pull-left">
@@ -8,7 +9,7 @@
         <!-- Conversations are loaded here -->
         <div *ngFor="let message of messages" class="col-12-sm">
           <div class="chattext">
-            <strong>{{message.user | titlecase}}</strong>({{message.timestamp |
+            <span class="username"><strong>{{message.user | titlecase}}</strong></span>({{message.timestamp |
             date:'MM/dd/yyyy@h:mma'}}):
             {{message.message}}
           </div>

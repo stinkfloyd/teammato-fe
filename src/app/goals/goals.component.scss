@@ -1,12 +1,27 @@
 #goals {
   border: 2px solid black;
-  margin: 1px;
+  object-fit: contain;
+}
+
+.goals {
+  object-fit: contain;
+  margin: none !important;
+  padding: none !important;
+  width: 100%;
+  padding-right: none !important;
+  padding-left: none !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
 }
 
 .goalScroll {
   height: 300px;
   overflow: scroll;
+  background: white;
+  object-fit: contain !important;
 }
+
+
 
 #head {
   border-bottom: 2px solid black;
@@ -25,4 +40,26 @@
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr)
+}
+
+.buttonDiv {
+  overflow: visible;
+  display: block;
+  padding-right: -2%;
+}
+
+.card-body {
+  object-fit: contain;
+  margin: none !important;
+  padding: none !important;
+  width: 100%;
+  padding-right: none !important;
+  padding-left: none !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+
+}
+
+.fas {
+  font-size: 3em;
 }

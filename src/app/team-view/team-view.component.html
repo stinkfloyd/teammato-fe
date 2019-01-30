@@ -1,3 +1,5 @@
-<h1>Welcome to Team {{team.name | titlecase}}'s Page. You are {{team.username | titlecase}}.</h1>
+<h1 id="welcome">Welcome {{team.username | titlecase}}.</h1>
 <app-chat [username]="team.username"></app-chat>
-<app-goals class="col-sm-12" [creator]="team.creator_username" [username]="team.username" [teamID]="id"></app-goals>
+<div class="container">
+  <app-goals [creator]="team.creator_username" [username]="team.username" [teamID]="id"></app-goals>
+</div>

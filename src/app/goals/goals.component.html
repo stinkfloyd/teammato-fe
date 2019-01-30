@@ -1,8 +1,8 @@
 <div class="wrapper" id="goalDiv">
-  <div class="goals" id="backlog">
+  <div class="container goals" id="backlog">
     <h1 id="head">Goal Backlog
-      <button *ngIf="!edit" class="btn btn-primary" (click)="onClick()"><strong>Add New</strong></button>
-      <button *ngIf="edit" class="btn btn-danger" (click)="onClick()"><strong>Close Form</strong></button>
+      <button *ngIf="!edit" class="btn btn-primary" (click)="onClick()"><strong>+</strong></button>
+      <button *ngIf="edit" class="btn btn-danger" (click)="onClick()"><strong>x</strong></button>
     </h1>
     <div class="goalScroll">
       <div id="goalEdit" *ngIf="edit">
@@ -11,47 +11,78 @@
       <div *ngFor="let goal of goalList">
         <div class="card" *ngIf="!goal.accepted">
           <div class="card-body">
-            <h5 class="card-title">{{goal.title}}</h5>
-            <p class="card-text">Desc: {{goal.desc}}</p>
-            <p class="card-text">Added by: {{goal.creator | titlecase}}</p>
-            <button class="btn btn-success" id={{goal.id}} (click)="acceptGoal($event)">Accept Goal</button>
+            <div class="row">
+              <div class="col-sm-8">
+                <h5 class="card-title">{{goal.title}}</h5>
+                <p class="card-text">Desc: {{goal.desc}}</p>
+                <p class="card-text">Added by: {{goal.creator | titlecase}}</p>
+              </div>
+              <div class="col-sm-4 buttonDiv">
+                <div>
+                  <i class="fas fa-check-square" id={{goal.id}} (click)="acceptGoal($event)"></i>
+                </div>
+                <div>
+                  <i *ngIf="username === creator" class="fas fa-trash" id={{goal.id}} (click)="removeGoal($event)"></i>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="goals" id="accepted">
+  <div class="container goals" id="accepted">
     <h1 id="head">Accepted Goals</h1>
     <div class="goalScroll">
       <div *ngFor="let goal of goalList">
-        <div class="card" *ngIf="goal.accepted && !goal.completed">
+        <div class="card animated bounceIn" *ngIf="goal.accepted && !goal.completed">
           <div class="card-body">
-            <h5 class="card-title">{{goal.title}}</h5>
-            <p class="card-text">Desc: {{goal.desc}}</p>
-            <p class="card-text">Accepted by: {{goal.acceptedBy | titlecase}}</p>
-            <button *ngIf="goal.acceptedBy === username || username === creator" class="btn btn-success" id={{goal.id}}
-              (click)="completeGoal($event)">Complete
-              Goal</button><button *ngIf="username === creator" class="btn btn-warning" id={{goal.id}} (click)="unCompleteGoal($event)">Undo
-              Accept</button>
+            <div class="row">
+              <div class="col-sm-8">
+                <h5 class="card-title">{{goal.title}}</h5>
+                <p class="card-text">Desc: {{goal.desc}}</p>
+                <p class="card-text">Accepted by: {{goal.acceptedBy | titlecase}}</p>
+              </div>
+              <div class="col-sm-4 buttonDiv">
+
+                <div>
+                  <i class="fas fa-check-square" id={{goal.id}} (click)="acceptGoal($event)"></i>
+                </div>
+                <div>
+                  <i *ngIf="username === creator" class="fas fa-trash" id={{goal.id}} (click)="removeGoal($event)"></i>
+                </div>
+                <div>
+                  <i *ngIf="username === creator" class="fas fa-undo" id={{goal.id}} (click)="unCompleteGoal($event)"></i>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="goals" id="complete">
+  <div class="container goals" id="complete">
     <h1 id="head">Completed Goals</h1>
     <div class="goalScroll">
       <div *ngFor="let goal of goalList">
         <div class="card" *ngIf="goal.completed">
           <div class="card-body">
-            <h5 class="card-title">{{goal.title}}</h5>
-            <p class="card-text">Desc: {{goal.desc}}</p>
-            <p class="card-text">Completed by: {{goal.completedBy | titlecase}}</p>
-            <button *ngIf="username === creator || username === goal.completedBy" class="btn btn-warning" id={{goal.id}}
-              (click)="unCompleteGoal($event)">Undo
-              Completion</button>
-            <button *ngIf="username === creator" class="btn btn-danger" id={{goal.id}} (click)="removeGoal($event)">Remove
-              from Log</button>
+            <div class="row">
+              <div class="col-sm-9">
+                <h5 class="card-title">{{goal.title}}</h5>
+                <p class="card-text">Desc: {{goal.desc}}</p>
+                <p class="card-text">Completed by: {{goal.completedBy | titlecase}}</p>
+              </div>
+              <div class="col-sm-3 buttonDiv">
+                <div>
+                  <i *ngIf="username === creator || username === goal.completedBy" class="fas fa-undo" id={{goal.id}}
+                    (click)="unCompleteGoal($event)"></i>
+                </div>
+                <div>
+                  <i *ngIf="username === creator" class="fas fa-trash" id={{goal.id}} (click)="removeGoal($event)"></i>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

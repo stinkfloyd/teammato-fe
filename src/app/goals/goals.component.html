@@ -29,9 +29,10 @@
             <h5 class="card-title">{{goal.title}}</h5>
             <p class="card-text">Desc: {{goal.desc}}</p>
             <p class="card-text">Accepted by: {{goal.acceptedBy | titlecase}}</p>
-            <button *ngIf="goal.acceptedBy === username || username === creator" class="btn btn-danger" id={{goal.id}}
+            <button *ngIf="goal.acceptedBy === username || username === creator" class="btn btn-success" id={{goal.id}}
               (click)="completeGoal($event)">Complete
-              Goal</button>
+              Goal</button><button *ngIf="username === creator" class="btn btn-warning" id={{goal.id}} (click)="unCompleteGoal($event)">Undo
+              Accept</button>
           </div>
         </div>
       </div>
@@ -46,7 +47,8 @@
             <h5 class="card-title">{{goal.title}}</h5>
             <p class="card-text">Desc: {{goal.desc}}</p>
             <p class="card-text">Completed by: {{goal.completedBy | titlecase}}</p>
-            <button *ngIf="username === creator" class="btn btn-warning" id={{goal.id}} (click)="unCompleteGoal($event)">Undo
+            <button *ngIf="username === creator || username === goal.completedBy" class="btn btn-warning" id={{goal.id}}
+              (click)="unCompleteGoal($event)">Undo
               Completion</button>
             <button *ngIf="username === creator" class="btn btn-danger" id={{goal.id}} (click)="removeGoal($event)">Remove
               from Log</button>

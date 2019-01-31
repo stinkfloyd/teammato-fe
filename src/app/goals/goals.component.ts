@@ -17,7 +17,7 @@ export class GoalsComponent implements OnInit {
   @Input() creator
   // tslint:disable-next-line:no-output-on-prefix
   @Output() emit: EventEmitter<any> = new EventEmitter()
-
+  goalList = []
   backlog = []
   accepted = []
   completed = []
@@ -54,13 +54,11 @@ export class GoalsComponent implements OnInit {
     this.goals
       .getGoals(this.teamID)
       .subscribe(goals => {
+        this.goalList = goals
         this.backlog = goals.filter(goal => !goal.accepted && !goal.completed)
         this.accepted = goals.filter(goal => goal.accepted && !goal.completed)
         this.completed = goals.filter(goal => goal.accepted && goal.completed)
       })
-  }
-  onClick = () => {
-    this.edit = !this.edit
   }
 
   acceptGoal = (event) => {

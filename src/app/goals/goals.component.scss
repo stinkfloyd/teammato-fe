@@ -16,6 +16,8 @@
   overflow: scroll;
   background: white;
   object-fit: contain !important;
+  background-color: #0F3340 !important;
+  font-size: 25px;
 }
 
 .plusbtn {
@@ -58,6 +60,7 @@
   margin-right: auto !important;
   margin-left: auto !important;
   font-family: 'Lucida Sans Unicode';
+
 }
 
 .card-title {
@@ -69,8 +72,22 @@
 }
 
 .fas {
-  font-size: 4em;
+  font-size: 18px;
   margin-top: auto;
   margin-bottom: auto;
   padding: .25em;
+}
+
+.goalContainer {
+  width: 33%;
+  margin: 2%;
+}
+
+.workingRow {
+  min-height: 300px;
+  margin-top: 25px;
+}
+
+.completedRow {
+  margin-bottom: 5em;
 }

@@ -1,91 +1,18 @@
-<div class="wrapper" id="goalDiv">
-  <div class="container goals" id="backlog">
-    <h1 id="head">Goal Backlog
-      <button *ngIf="!edit" class="btn btn-primary plusbtn" (click)="onClick()"><strong>+</strong></button>
-      <button *ngIf="edit" class="btn btn-danger plusbtn" (click)="onClick()"><strong>x</strong></button>
-    </h1>
-    <div class="goalScroll">
-      <div id="goalEdit" *ngIf="edit">
-        <app-create-goal [teamID]="teamID" [username]="username" (onGoalSubmit)="getGoals()"></app-create-goal>
-      </div>
-      <div *ngFor="let goal of backlog">
-        <div class="card animated bounceIn" *ngIf="!goal.accepted">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-8">
-                <h5 class="card-title">{{goal.title}}</h5>
-                <p class="card-text"><strong>-</strong>{{goal.desc}}</p>
-                <p class="card-text">Added by: {{goal.creator | titlecase}}</p>
-              </div>
-              <div class="col-sm-4 buttonDiv">
-                <div>
-                  <i class="fas fa-check-square" id={{goal.id}} (click)="acceptGoal($event)"></i>
-                </div>
-                <div>
-                  <i *ngIf="username === creator" class="fas fa-trash" id={{goal.id}} (click)="removeGoal($event)"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="container">
+  <div class="row workingRow">
+    <div class="col-sm-6">
+      <app-backlog class="backlog" [teamID]="teamID" [username]="username" [creator]="creator" [backlog]="backlog"
+        (newGoalEmit)="acceptGoal($event)" (deleteGoalEmit)="removeGoal($event)"></app-backlog>
+    </div>
+    <div class="col-sm-6">
+      <app-accepted class="accepted" [teamID]="teamID" [username]="username" [creator]="creator" [accepted]="accepted"
+        (completeGoalEmit)="completeGoal($event)" (unCompleteGoalEmit)="unCompleteGoal($event)" (deleteGoalEmit)="removeGoal($event)"></app-accepted>
     </div>
   </div>
-  <div class="container goals" id="accepted">
-    <h1 id="head">Accepted Goals</h1>
-    <div class="goalScroll">
-      <div *ngFor="let goal of accepted">
-        <div class="card animated bounceIn" *ngIf="goal.accepted && !goal.completed">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-8">
-                <h5 class="card-title">{{goal.title}}</h5>
-                <p class="card-text"><strong>-</strong>{{goal.desc}}</p>
-                <p class="card-text">Accepted by: {{goal.acceptedBy | titlecase}}</p>
-              </div>
-              <div class="col-sm-4 buttonDiv">
-                <div>
-                  <i *ngIf="username === creator || username === goal.acceptedBy" class="fas fa-check-square" id={{goal.id}}
-                    (click)="completeGoal($event)"></i>
-                </div>
-                <div>
-                  <i *ngIf="username === creator" class="fas fa-trash" id={{goal.id}} (click)="removeGoal($event)"></i>
-                </div>
-                <div>
-                  <i *ngIf="username === creator" class="fas fa-undo" id={{goal.id}} (click)="unCompleteGoal($event)"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container goals" id="complete">
-    <h1 id="head">Completed Goals</h1>
-    <div class="goalScroll">
-      <div *ngFor="let goal of completed">
-        <div class="card animated bounceIn" *ngIf="goal.completed">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-9">
-                <h5 class="card-title">{{goal.title}}</h5>
-                <p class="card-text"><strong>-</strong>{{goal.desc}}</p>
-                <p class="card-text">Completed by: {{goal.completedBy | titlecase}}</p>
-              </div>
-              <div class="col-sm-3 buttonDiv">
-                <div>
-                  <i *ngIf="username === creator || username === goal.completedBy" class="fas fa-undo" id={{goal.id}}
-                    (click)="unCompleteGoal($event)"></i>
-                </div>
-                <div>
-                  <i *ngIf="username === creator" class="fas fa-trash" id={{goal.id}} (click)="removeGoal($event)"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="row completedRow">
+    <div class="col-sm-12">
+      <app-completed class="completed" [teamID]="teamID" [username]="username" [creator]="creator" [completed]="completed"
+        (unCompleteGoalEmit)="unCompleteGoal($event)" (deleteGoalEmit)="removeGoal($event)"></app-completed>
     </div>
   </div>
 </div>

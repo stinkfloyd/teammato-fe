@@ -1,5 +1,5 @@
 <h1 id="welcome">Welcome {{team.username | titlecase}}.</h1>
 <app-chat [teamName]="team.name" [username]="team.username"></app-chat>
-<div class="container">
+<div class="container goalView">
   <app-goals [creator]="team.creator_username" [username]="team.username" [teamID]="id"></app-goals>
 </div>

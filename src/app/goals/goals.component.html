@@ -8,8 +8,8 @@
       <div id="goalEdit" *ngIf="edit">
         <app-create-goal [teamID]="teamID" [username]="username" (onGoalSubmit)="getGoals()"></app-create-goal>
       </div>
-      <div *ngFor="let goal of goalList">
-        <div class="card" *ngIf="!goal.accepted">
+      <div *ngFor="let goal of backlog">
+        <div class="card animated bounceIn" *ngIf="!goal.accepted">
           <div class="card-body">
             <div class="row">
               <div class="col-sm-8">
@@ -34,7 +34,7 @@
   <div class="container goals" id="accepted">
     <h1 id="head">Accepted Goals</h1>
     <div class="goalScroll">
-      <div *ngFor="let goal of goalList">
+      <div *ngFor="let goal of accepted">
         <div class="card animated bounceIn" *ngIf="goal.accepted && !goal.completed">
           <div class="card-body">
             <div class="row">
@@ -44,9 +44,8 @@
                 <p class="card-text">Accepted by: {{goal.acceptedBy | titlecase}}</p>
               </div>
               <div class="col-sm-4 buttonDiv">
-
                 <div>
-                  <i class="fas fa-check-square" id={{goal.id}} (click)="acceptGoal($event)"></i>
+                  <i class="fas fa-check-square" id={{goal.id}} (click)="completeGoal($event)"></i>
                 </div>
                 <div>
                   <i *ngIf="username === creator" class="fas fa-trash" id={{goal.id}} (click)="removeGoal($event)"></i>
@@ -64,8 +63,8 @@
   <div class="container goals" id="complete">
     <h1 id="head">Completed Goals</h1>
     <div class="goalScroll">
-      <div *ngFor="let goal of goalList">
-        <div class="card" *ngIf="goal.completed">
+      <div *ngFor="let goal of completed">
+        <div class="card animated bounceIn" *ngIf="goal.completed">
           <div class="card-body">
             <div class="row">
               <div class="col-sm-9">

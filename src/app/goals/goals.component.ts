@@ -39,7 +39,7 @@ export class GoalsComponent implements OnInit {
       this.completed.push(goal)
     })
     this.socket.unCompletedGoals().subscribe((goal) => {
-      this.backlog = this.backlog.filter(backlog => backlog.id !== goal.id)
+      this.completed = this.completed.filter(completed => completed.id !== goal.id)
       this.accepted = this.accepted.filter(accepted => accepted.id !== goal.id)
       this.backlog.push(goal)
     })
@@ -88,14 +88,13 @@ export class GoalsComponent implements OnInit {
     console.log('username:', this.username)
     const user = { username: this.username }
     this.goals.unCompleteGoal(event.target.id, user).subscribe((goal) => {
-      console.log('goal (unCompleteGoal result): ', goal)
-      // this.getGoals()
+
     })
   }
 
   removeGoal = (event) => {
     this.goals.deleteGoal(event.target.id).subscribe((goal) => {
-      // this.getGoals()
+
     })
   }
 }

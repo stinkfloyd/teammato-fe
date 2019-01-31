@@ -14,6 +14,7 @@ export class ChatComponent implements OnInit {
   timestamp: Date
 
   @Input() username: string
+  @Input() teamName: string
 
   constructor(private socketService: SocketService, private userService: UserService) {
   }

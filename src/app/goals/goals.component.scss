@@ -1,7 +1,4 @@
-#goals {
-  border: 2px solid black;
-  object-fit: contain;
-}
+#goals {}
 
 .goals {
   object-fit: contain;
@@ -21,7 +18,10 @@
   object-fit: contain !important;
 }
 
-
+.plusbtn {
+  background-color: #0F3340;
+  font-size: .5em;
+}
 
 #head {
   border-bottom: 2px solid black;
@@ -57,9 +57,20 @@
   padding-left: none !important;
   margin-right: auto !important;
   margin-left: auto !important;
+  font-family: 'Lucida Sans Unicode';
+}
 
+.card-title {
+  font-size: 22px;
+}
+
+.card-text {
+  font-size: 18px;
 }
 
 .fas {
-  font-size: 3em;
+  font-size: 4em;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: .25em;
 }

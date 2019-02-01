@@ -1,10 +1,10 @@
 <div class="container goals" id="completed">
   <h1 id="head">Completed Goals</h1>
   <div class="goalScroll">
-    <ngb-accordion [closeOthers]="true" class="animated bounceIn">
-      <div *ngFor="let goal of completed">
-        <div class="card" *ngIf="goal.accepted && goal.completed">
-          <div class="card-body">
+    <div *ngFor="let goal of completed">
+      <div class="card animated bounceIn" *ngIf="goal.accepted && goal.completed">
+        <div class="card-body">
+          <ngb-accordion>
             <ngb-panel id={{goal.id}}>
               <ng-template ngbPanelTitle>
                 <span><b>{{goal.title}}</b></span>
@@ -27,9 +27,9 @@
                 </div>
               </ng-template>
             </ngb-panel>
-          </div>
+          </ngb-accordion>
         </div>
       </div>
-    </ngb-accordion>
+    </div>
   </div>
 </div>

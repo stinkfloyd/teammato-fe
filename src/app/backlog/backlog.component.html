@@ -7,13 +7,21 @@
     <div id="goalEdit" *ngIf="edit">
       <app-create-goal [teamID]="teamID" [username]="username" (onGoalSubmit)="getGoals()"></app-create-goal>
     </div>
-    <ngb-accordion [closeOthers]="true">
-      <div *ngFor="let goal of backlog">
-        <div class="card animated bounceIn" *ngIf="!goal.accepted">
-          <div class="card-body">
+
+    <div *ngFor="let goal of backlog">
+      <div class="card animated bounceIn" *ngIf="!goal.accepted">
+        <div class="card-body">
+          <ngb-accordion [closeOthers]="true">
             <ngb-panel id={{goal.id}}>
               <ng-template ngbPanelTitle>
-                <span><b>{{goal.title}}</b></span>
+                <div class="row" class="goalTitle">
+                  <div class="col-sm-6">
+                    <span><b>{{goal.title}}</b></span>
+                  </div>
+                  <div class="col-sm-6">
+                    <ngb-rating [rate]="goal.rate"></ngb-rating>
+                  </div>
+                </div>
               </ng-template>
               <ng-template ngbPanelContent>
                 <div class="row">
@@ -32,9 +40,9 @@
                 </div>
               </ng-template>
             </ngb-panel>
-          </div>
+          </ngb-accordion>
         </div>
       </div>
-    </ngb-accordion>
+    </div>
   </div>
 </div>

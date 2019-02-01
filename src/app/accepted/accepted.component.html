@@ -1,19 +1,28 @@
 <div class="container goals" id="accepted">
   <h1 id="head">Accepted Goals</h1>
   <div class="goalScroll">
-    <ngb-accordion [closeOthers]="true" class="animated bounceIn">
-      <div *ngFor="let goal of accepted">
-        <div class="card" *ngIf="goal.accepted && !goal.completed">
-          <div class="card-body">
+
+    <div *ngFor="let goal of accepted">
+      <div class="card animated bounceIn" *ngIf="goal.accepted && !goal.completed">
+        <div class="card-body">
+          <ngb-accordion>
             <ngb-panel class="accordion" id={{goal.id}}>
               <ng-template ngbPanelTitle>
-                <span><b>{{goal.title}}</b></span>
+                <div class="row goalTitle">
+                  <div class="col-sm-6">
+                    <span><b>{{goal.title}}</b></span>
+                  </div>
+                  <div class="col-sm-6">
+                    <ngb-rating [rate]="goal.rate"></ngb-rating>
+                  </div>
+                </div>
               </ng-template>
               <ng-template ngbPanelContent>
                 <div class="row">
                   <div class="col-sm-8">
                     <p class="card-text"><strong>-</strong>{{goal.desc}}</p>
                     <p class="card-text">Accepted by: {{goal.acceptedBy | titlecase}}</p>
+
                   </div>
                   <div class="col-sm-4 buttonDiv">
                     <div>
@@ -31,9 +40,9 @@
                 </div>
               </ng-template>
             </ngb-panel>
-          </div>
+          </ngb-accordion>
         </div>
       </div>
-    </ngb-accordion>
+    </div>
   </div>
 </div>

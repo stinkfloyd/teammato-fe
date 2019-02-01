@@ -1,4 +1,12 @@
-#goals {}
+.container-fluid {
+  border: 2px solid #0f3340;
+  margin: auto;
+  padding: 0%;
+  width: 95%;
+  border-bottom-left-radius: 2.25%;
+  border-bottom-right-radius: 2.25%;
+  margin-bottom: 3em;
+}
 
 .goals {
   object-fit: contain;

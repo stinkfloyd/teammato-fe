@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core'
+import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
   selector: 'app-accepted',
@@ -18,7 +19,10 @@ export class AcceptedComponent implements OnInit {
   // tslint:disable-next-line:no-output-on-prefix
   @Output() unCompleteGoalEmit: EventEmitter<any> = new EventEmitter()
 
-  constructor() { }
+  constructor(config: NgbRatingConfig) {
+    config.max = 5
+    config.readonly = true
+  }
 
   ngOnInit() {
   }

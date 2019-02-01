@@ -26,6 +26,7 @@ export class CreateGoalComponent implements OnInit {
   formData = {
     title: '',
     desc: '',
+    rate: 3,
   }
   error = false
   errorMessage = ''
@@ -40,6 +41,7 @@ export class CreateGoalComponent implements OnInit {
       title: form.value.title,
       desc: form.value.desc,
       creator: this.username,
+      rate: form.value.rate,
       team_id: parseInt(this.teamID, 10),
     }
     console.log('newGoal: ', newGoal)

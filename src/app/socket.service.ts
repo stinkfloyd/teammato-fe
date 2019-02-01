@@ -7,7 +7,7 @@ import { Observable } from 'rxjs'
 })
 export class SocketService {
 
-  private url = 'http://localhost:3000'
+  private url = 'https://obscure-reaches-16352.herokuapp.com'
   private socket
 
   constructor() {

@@ -7,7 +7,7 @@ import { tap } from 'rxjs/internal/operators'
 import { SocketService } from './socket.service'
 
 
-const baseAPI = 'http://localhost:3000'
+const baseAPI = 'https://obscure-reaches-16352.herokuapp.com'
 
 @Injectable({
   providedIn: 'root'

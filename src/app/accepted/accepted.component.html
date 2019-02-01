@@ -1,5 +1,5 @@
 <div class="container goals" id="accepted">
-  <h1 id="head">Accepted Goals</h1>
+  <h1 id="head"><strong>Accepted Goals</strong></h1>
   <div class="goalScroll">
 
     <div *ngFor="let goal of accepted">
@@ -13,7 +13,9 @@
                     <span><b>{{goal.title}}</b></span>
                   </div>
                   <div class="col-sm-6">
-                    <ngb-rating [rate]="goal.rate"></ngb-rating>
+                    <span class="priority">Priority:<span class="stars">
+                        <ngb-rating [rate]="goal.rate"></ngb-rating>
+                      </span></span>
                   </div>
                 </div>
               </ng-template>

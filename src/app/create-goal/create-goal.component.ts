@@ -44,7 +44,7 @@ export class CreateGoalComponent implements OnInit {
       rate: form.value.rate,
       team_id: parseInt(this.teamID, 10),
     }
-    console.log('newGoal: ', newGoal)
+    console.log('rate: ', newGoal.rate.value)
     this.goal.createGoal(newGoal)
       .subscribe(result => {
         this.formData.title = ''
